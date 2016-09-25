@@ -4,17 +4,35 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Personas Web</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            text-align: center;
+            text-decoration: underline;
+            font-size: x-large;
+            color: #FFFFFF;
+        }
+        .auto-style3 {
+            color: #800000;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
+        <div class="auto-style1">
+            <strong><span class="auto-style3">Personas Web </span></strong> </div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+            <p>
+                &nbsp;</p>
         
         </asp:ContentPlaceHolder>
     </div>
     </form>
+    <p>
+        Derechos Casi Revervados</p>
 </body>
 </html>

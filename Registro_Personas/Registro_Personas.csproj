@@ -58,6 +58,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataBase\PersonasDataBase.mdf" />
+    <Content Include="Registros\RegistroPersonas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +71,13 @@
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registros\RegistroPersonas.aspx.cs">
+      <DependentUpon>RegistroPersonas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registros\RegistroPersonas.aspx.designer.cs">
+      <DependentUpon>RegistroPersonas.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterPage.Master" />
