@@ -7,6 +7,8 @@
     <title>Personas Web</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="CSS/estilos.css" media="screen">
     <style type="text/css">
         .auto-style1 {
             text-align: center;
@@ -32,7 +34,8 @@
         </asp:ContentPlaceHolder>
     </div>
     </form>
-    <p>
-        Derechos Casi Revervados</p>
+    <div id ="pie" ><p>
+        Derechos Casi Reservados</p>
+        </div>
 </body>
 </html>
