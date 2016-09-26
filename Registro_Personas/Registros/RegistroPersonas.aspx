@@ -121,39 +121,22 @@
                 <asp:ListItem>Trabajo</asp:ListItem>
                 <asp:ListItem>Celular</asp:ListItem>
                 </asp:DropDownList>
-&nbsp;Telefono:<asp:TextBox ID="TelefonoTextBox" runat="server" Width="61px"></asp:TextBox>
+&nbsp;Telefono:<asp:TextBox ID="TelefonoTextBox" runat="server" Width="75px"></asp:TextBox>
                 <asp:Button ID="AgregarButton" Class="btn-primary" runat="server" Text="Agregar" Width="75px" OnClick="AgregarButton_Click" />
             </td>
         </tr>
         <tr>
             <td class="auto-style12">&nbsp;</td>
             <td class="auto-style16">
-                <asp:GridView ID="telefonosGridView" runat="server" AutoGenerateColumns="False" Height="44px" Width="194px" ShowFooter="True">
-                <Columns>
-                    <asp:TemplateField AccessibleHeaderText="Tipo" HeaderText="Tipo">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label1" runat="server"></asp:Label>
-                        </ItemTemplate>
-                        <HeaderStyle HorizontalAlign="Center" />
-                        <ItemStyle HorizontalAlign="Center" />
-                    </asp:TemplateField>
-                    <asp:TemplateField AccessibleHeaderText="Telefono" HeaderText="Telefono">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label2" runat="server"></asp:Label>
-                        </ItemTemplate>
-                        <HeaderStyle HorizontalAlign="Left" />
-                        <ItemStyle HorizontalAlign="Left" />
-                    </asp:TemplateField>
-                </Columns> 
+                &nbsp;</td>
+            <td>
+                <asp:GridView ID="telefonosGridView" runat="server" AutoGenerateColumns="False" Height="16px" Width="200px">
+                    <Columns>
+                        <asp:BoundField AccessibleHeaderText="Tipo" HeaderText="Tipo" />
+                        <asp:BoundField AccessibleHeaderText="Telefono" HeaderText="Telefono" />
+                    </Columns>
                 </asp:GridView>
             </td>
-            <td>&nbsp;</td>
         </tr>
         <tr>
             <td class="auto-style13">

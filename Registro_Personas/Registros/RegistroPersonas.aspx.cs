@@ -46,10 +46,10 @@ namespace Registro_Personas.Registros
             persona.Nombres = nombreTextBox.Text;
             Comparar();
             persona.Sexo = sexo;
-            /*foreach (var numeros in persona.telefonos)
+            foreach (GridViewRow row in telefonosGridView.Rows)
             {
-                telefonosGridView.Rows.Add(numeros.PersonaId, numeros.TipoTelefono, numeros.Telefono);
-            }*/
+                persona.InsertarTelefono(1, row.Cells[1].Text, row.Cells[2].Text);
+            }
         }
 
         private void DevolverValores()
@@ -60,11 +60,30 @@ namespace Registro_Personas.Registros
                 masculinoRadioButton.Checked = true;
             if (persona.Sexo == false)
                 femeninoRadioButton.Checked = true;
+            telefonosGridView.DataSource = persona.telefonos;
+            telefonosGridView.DataBind();
         }
 
         protected void buscarButton_Click(object sender, EventArgs e)
         {
-
+            telefonosGridView.DataSource = null;
+            ObtenerValores();
+            if (personaIdTextBox.Text.Length == 0)
+            {
+                Response.Write("<script>alert('Debe insertar un Id, Error al Buscar')</script>");
+            }
+            else
+            {
+                if (persona.Buscar(persona.PersonaId))
+                {
+                    DevolverValores();
+                }
+                else
+                {
+                    Response.Write("<script>alert('Id no encontrado')</script>");
+                    Limpiar();
+                }
+            }
         }
 
         protected void AgregarButton_Click(object sender, EventArgs e)
@@ -73,10 +92,11 @@ namespace Registro_Personas.Registros
             {
                 if (!TelefonoTextBox.Text.Equals("") && !TipoDropDownList.Text.Equals(""))
                 {
-                    //telefonosGridView.Rows.Add(TelefonoTextBox.Text, TipoDropDownList.Text);
+                    /*
                     persona.InsertarTelefono(1, TelefonoTextBox.Text, TipoDropDownList.Text);
                     ((TextBox)TelefonoTextBox).Text = string.Empty;
-                    TipoDropDownList.SelectedIndex = -1;
+                    TipoDropDownList.SelectedIndex = -1;*/
+
                 }
             }
             catch (Exception)

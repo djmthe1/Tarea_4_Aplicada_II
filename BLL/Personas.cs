@@ -102,7 +102,7 @@ namespace BLL
             dt = conexion.ObtenerDatos("SELECT * FROM Personas WHERE PersonaId=" + IdBuscado);
             if (dt.Rows.Count > 0)
             {
-                this.PersonaId = (int)dt.Rows[0]["PersonasId"];
+                this.PersonaId = (int)dt.Rows[0]["PersonaId"];
                 this.Nombres = dt.Rows[0]["Nombres"].ToString();
                 this.Sexo = (bool)dt.Rows[0]["Sexo"];
 
