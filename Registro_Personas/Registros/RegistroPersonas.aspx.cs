@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BLL;
+using System.Data;
 
 namespace Registro_Personas.Registros
 {
@@ -12,12 +13,25 @@ namespace Registro_Personas.Registros
     {
 
         Personas persona = new Personas();
+        DataTable dt = new DataTable();
         int id;
         bool sexo = true;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                this.telefonosGridView.DataSource = ObtenerLista();
+                this.telefonosGridView.DataBind();
+            }
+        }
 
+        public List<PersonasTelefonos> ObtenerLista()
+        {
+            List<PersonasTelefonos> lista = new List<PersonasTelefonos>();
+            PersonasTelefonos telefono = new PersonasTelefonos();
+            lista.Add(telefono);
+            return lista;
         }
 
         private void Comparar()
@@ -41,15 +55,16 @@ namespace Registro_Personas.Registros
 
         private void ObtenerValores()
         {
+            Session["Personas"] = new Personas();
             int.TryParse(personaIdTextBox.Text, out id);
             persona.PersonaId = id;
             persona.Nombres = nombreTextBox.Text;
             Comparar();
             persona.Sexo = sexo;
-            foreach (GridViewRow row in telefonosGridView.Rows)
+            /*foreach (GridViewRow row in telefonosGridView.Rows)
             {
                 persona.InsertarTelefono(1, row.Cells[1].Text, row.Cells[2].Text);
-            }
+            }*/
         }
 
         private void DevolverValores()
@@ -90,14 +105,28 @@ namespace Registro_Personas.Registros
         {
             try
             {
-                if (!TelefonoTextBox.Text.Equals("") && !TipoDropDownList.Text.Equals(""))
-                {
-                    /*
-                    persona.InsertarTelefono(1, TelefonoTextBox.Text, TipoDropDownList.Text);
-                    ((TextBox)TelefonoTextBox).Text = string.Empty;
-                    TipoDropDownList.SelectedIndex = -1;*/
+                    /*Personas personas;
 
-                }
+                    if (Session["Personas"] == null)
+                    {
+                        Session["Personas"] = new Personas();
+                    }
+
+                    personas = (Personas)Session["Personas"];
+
+                    //persona.InsertarTelefono(1, TelefonoTextBox.Text, TipoDropDownList.Text);
+
+                    Session["Personas"] = personas;
+
+                    telefonosGridView.DataSource = personas.Telefono;
+                    telefonosGridView.DataBind();
+
+                DataTable dt = (DataTable)ViewState["Detalle"];
+                dt.Rows.Add(1, TelefonoTextBox.Text, TipoDropDownList.Text);
+                ViewState["Detalle"] = dt;
+                ((TextBox)TelefonoTextBox).Text = string.Empty;
+                TipoDropDownList.SelectedIndex = -1;*/
+
             }
             catch (Exception)
             {

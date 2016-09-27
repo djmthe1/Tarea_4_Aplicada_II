@@ -14,7 +14,7 @@ namespace BLL
         public string Nombres { get; set; }
         public bool Sexo { get; set; }
         ConexionDb conexion = new ConexionDb();
-        PersonasTelefonos Telefono = new PersonasTelefonos();
+        public PersonasTelefonos Telefono = new PersonasTelefonos();
         public List<PersonasTelefonos> telefonos { get; set; }
 
         public Personas(int personaId, string nombres, bool sexo)
@@ -86,7 +86,7 @@ namespace BLL
             bool retorno = false;
             try
             {
-                retorno = conexion.Ejecutar(String.Format("DELETE FROM Personas WHERE ClienteId={0}", this.PersonaId));
+                retorno = conexion.Ejecutar(String.Format("DELETE FROM Personas WHERE PersonaId={0}", this.PersonaId));
                 if (retorno)
                     conexion.Ejecutar(String.Format("DELETE FROM PersonasTelefonos WHERE PersonaId={0}", this.PersonaId));
             }
