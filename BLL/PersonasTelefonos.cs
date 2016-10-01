@@ -12,17 +12,8 @@ namespace BLL
         public string TipoTelefono { get; set; }
         public string Telefono { get; set; }
 
-        public PersonasTelefonos(int id, int personaId, string tipoTelefono, string telefono)
+        public PersonasTelefonos(string tipoTelefono, string telefono)
         {
-            this.Id = id;
-            this.PersonaId = personaId;
-            this.TipoTelefono = tipoTelefono;
-            this.Telefono = telefono;
-        }
-
-        public PersonasTelefonos(int personaId, string tipoTelefono, string telefono)
-        {
-            this.PersonaId = personaId;
             this.TipoTelefono = tipoTelefono;
             this.Telefono = telefono;
         }

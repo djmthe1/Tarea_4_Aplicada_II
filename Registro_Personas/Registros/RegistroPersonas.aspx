@@ -42,7 +42,7 @@
         }
         .auto-style14 {
             text-align: right;
-            width: 195px;
+            width: 234px;
             height: 22px;
         }
         .auto-style15 {
@@ -50,11 +50,11 @@
             height: 22px;
         }
         .auto-style16 {
-            width: 195px;
+            width: 234px;
         }
         .auto-style17 {
             text-align: center;
-            width: 195px;
+            width: 234px;
         }
     .auto-style18 {
         text-align: center;
@@ -116,12 +116,14 @@
         <tr>
             <td class="auto-style11"></td>
             <td class="auto-style14">&nbsp; </td>
-            <td class="auto-style15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tipo:<asp:DropDownList ID="TipoDropDownList" runat="server">
+            <td class="auto-style15">&nbsp;Tipo:<asp:DropDownList ID="TipoDropDownList" runat="server">
+                <asp:ListItem></asp:ListItem>
                 <asp:ListItem>Casa</asp:ListItem>
                 <asp:ListItem>Trabajo</asp:ListItem>
                 <asp:ListItem>Celular</asp:ListItem>
                 </asp:DropDownList>
-&nbsp;Telefono:<asp:TextBox ID="TelefonoTextBox" runat="server" Width="75px"></asp:TextBox>
+&nbsp;Telefono:<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TelefonoTextBox" ErrorMessage="El numero es incorrecto" ForeColor="Red" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}">*</asp:RegularExpressionValidator>
+                <asp:TextBox ID="TelefonoTextBox" runat="server" Width="75px"></asp:TextBox>
                 <asp:Button ID="AgregarButton" Class="btn-primary" runat="server" Text="Agregar" Width="75px" OnClick="AgregarButton_Click" />
             </td>
         </tr>
@@ -129,18 +131,19 @@
             <td class="auto-style12">&nbsp;</td>
             <td class="auto-style16">
                 &nbsp;</td>
-            <td>
-                <asp:GridView ID="telefonosGridView" runat="server" AutoGenerateColumns="False" Height="16px" Width="200px">
+            <td class="text-left">
+                <asp:GridView ID="telefonosGridView" runat="server" AutoGenerateColumns="False" Height="101px" Width="214px" >
                     <Columns>
-                        <asp:BoundField AccessibleHeaderText="Tipo" HeaderText="Tipo" />
-                        <asp:BoundField AccessibleHeaderText="Telefono" HeaderText="Telefono" />
+                            <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
+                            <asp:BoundField DataField="Numero" HeaderText="Numero" />
                     </Columns>
                 </asp:GridView>
             </td>
         </tr>
         <tr>
             <td class="auto-style13">
-                &nbsp;</td>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" Width="216px" />
+            </td>
             <td class="auto-style17">
                 &nbsp;</td>
             <td class="auto-style3">

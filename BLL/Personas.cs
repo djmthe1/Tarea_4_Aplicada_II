@@ -9,12 +9,9 @@ namespace BLL
 {
     public class Personas : ClaseMaestra
     {
-
         public int PersonaId { get; set; }
         public string Nombres { get; set; }
         public bool Sexo { get; set; }
-        ConexionDb conexion = new ConexionDb();
-        public PersonasTelefonos Telefono = new PersonasTelefonos();
         public List<PersonasTelefonos> telefonos { get; set; }
 
         public Personas(int personaId, string nombres, bool sexo)
@@ -29,13 +26,14 @@ namespace BLL
             telefonos = new List<PersonasTelefonos>();
         }
 
-        public void InsertarTelefono(int PersonaId, string TipoTelefono, string Telefono)
+        public void InsertarTelefono(string TipoTelefono, string Telefono)
         {
-            this.telefonos.Add(new PersonasTelefonos(PersonaId, TipoTelefono, Telefono));
+            this.telefonos.Add(new PersonasTelefonos(TipoTelefono, Telefono));
         }
 
         public override bool Insertar()
         {
+            ConexionDb conexion = new ConexionDb();
             int retorno = 0;
             object identity;
             try
@@ -64,6 +62,7 @@ namespace BLL
 
         public override bool Editar()
         {
+            ConexionDb conexion = new ConexionDb();
             bool retorno = false;
             try
             {
@@ -83,6 +82,7 @@ namespace BLL
 
         public override bool Eliminar()
         {
+            ConexionDb conexion = new ConexionDb();
             bool retorno = false;
             try
             {
@@ -96,6 +96,7 @@ namespace BLL
 
         public override bool Buscar(int IdBuscado)
         {
+            ConexionDb conexion = new ConexionDb();
             DataTable dt = new DataTable();
             DataTable dtTelefonos = new DataTable();
 
@@ -110,7 +111,7 @@ namespace BLL
 
                 foreach (DataRow row in dtTelefonos.Rows)
                 {
-                    this.InsertarTelefono((int)dtTelefonos.Rows[0]["PersonaId"], row["TipoTelefono"].ToString(), row["Telefono"].ToString());
+                    this.InsertarTelefono(row["TipoTelefono"].ToString(), row["Telefono"].ToString());
                 }
             }
             return dt.Rows.Count > 0;
@@ -118,6 +119,7 @@ namespace BLL
 
         public override DataTable Listado(string Campos, string Condicion, string Orden)
         {
+            ConexionDb conexion = new ConexionDb();
             string ordenar = "";
             if (!Orden.Equals(""))
                 ordenar = " orden by  " + Orden;

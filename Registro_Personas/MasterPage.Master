@@ -25,6 +25,8 @@
     <form id="form1" runat="server">
     <div>
         <div class="auto-style1">
+            <asp:ScriptManager ID="ScriptManager" runat="server">
+            </asp:ScriptManager>
             <strong><span class="auto-style3">Personas Web </span></strong> </div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
